@@ -17,6 +17,10 @@ public class UserService {
     }
 
     public void register(User user) {
+        for (User userExist : userMap.values()){
+            if(userExist.getUsername().equals(user.getUsername()))
+                throw new UserNotFindException("用户名已存在");
+        }
         UserData.addUser(user);
         userMap = UserData.getUserData();
     }
