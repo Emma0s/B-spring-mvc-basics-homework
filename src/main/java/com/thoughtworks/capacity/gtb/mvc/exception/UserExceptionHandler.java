@@ -1,5 +1,6 @@
-package com.thoughtworks.capacity.gtb.mvc.controller;
+package com.thoughtworks.capacity.gtb.mvc.exception;
 
+import com.thoughtworks.capacity.gtb.mvc.exception.ErrorMessage;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,4 +31,10 @@ public class UserExceptionHandler {
         ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.toString(),message);
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errorMessage);
     }
+    @ExceptionHandler(UserNotFindException.class)
+    public ResponseEntity<ErrorMessage> handle(UserNotFindException ex){
+        ErrorMessage errorMessage = new ErrorMessage(HttpStatus.NOT_FOUND.toString(), ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorMessage);
+    }
+
 }

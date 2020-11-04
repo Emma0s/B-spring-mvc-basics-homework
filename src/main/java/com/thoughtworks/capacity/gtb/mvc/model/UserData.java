@@ -1,6 +1,5 @@
 package com.thoughtworks.capacity.gtb.mvc.model;
 
-import com.thoughtworks.capacity.gtb.mvc.dto.User;
 import lombok.RequiredArgsConstructor;
 
 import java.util.HashMap;
@@ -12,6 +11,11 @@ public class UserData {
     private static Integer count = 1;
     public static Map<Integer, User> getUserData() {
         return userMap;
+    }
+
+    private static void initUsers(){
+        userMap.put(count++, new User("wenwei","12345","wenwei@qq.com"));
+        userMap.put(count++, new User("wenwei2","12345","wenwei@qq.com"));
     }
 
     public static void addUser(User user) {

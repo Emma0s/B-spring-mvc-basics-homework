@@ -1,4 +1,4 @@
-package com.thoughtworks.capacity.gtb.mvc.dto;
+package com.thoughtworks.capacity.gtb.mvc.model;
 
 import lombok.*;
 
@@ -17,7 +17,7 @@ public class User {
     @Pattern(regexp = "^[a-zA-Z0-9_]{3,10}$",message = "用户名不合法")
     private String username;
 
-    @NotBlank
+    @NotBlank(message = "密码不能为空")
     @Pattern(regexp = "^[0-9]{5,12}$",message = "密码不合法")
     private String password;
 
